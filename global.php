@@ -14,7 +14,7 @@ $CurrentRequestURLarr = explode("/",$_SERVER['REQUEST_URI']);
 
 // NAME OF THE LOAN SYSTEM (THIS WEEK)
 $_SESSION["SystemNameStr"]='EQUIPMENTDB';
-//$_SESSION["AUTH_USER"] = true;
+$_SESSION["AUTH_USER"] = true;
 // Get MySQL Details
 //include_once($_SERVER['HTTP_HOST']."/".strtolower($_SESSION["SystemNameStr"])."/protect/config.php");
 /*

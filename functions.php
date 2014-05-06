@@ -509,6 +509,8 @@ function download_aleph_data()
 		$line['User'] = $items[$i]->td[7];
 		$line['Status'] = $items[$i]->td[8];
 		$line['Institution'] = $items[$i]->td[9];
+		$line['Bk-start'] = $items[$i]->td[10];
+		$line['Bk-end'] = $items[$i]->td[11];
 		fwrite($file,"\n");
 		array_push($data,$line);
 		$line = '';

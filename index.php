@@ -35,7 +35,8 @@ if ($_SESSION["AUTH_USER"]==true)
 	<td align="left"><b>Loan Date</b></a></td>
 	<td align="left"><b>Due Date</b></a></td>
 	<td align="left"><b>User</b></a></td>
-	<td align="left"><b>Status</b></a></td>
+	<td align="left"><b>Start</b></a></td>
+	<td align="left"><b>End</b></a></td>	
 	<td align="left"><b>Institution</b></a></td></tr>';
 	
 	$data = download_aleph_data();
@@ -50,7 +51,8 @@ if ($_SESSION["AUTH_USER"]==true)
 						<td align="left">'.validate_date($datarow['Loan']).'</td>
 						<td align="left">'.validate_date($datarow['Due']).'</td>
 						<td align="left">'.$datarow['User'].'</td>
-						<td align="left">'.$datarow['Status'].'</td>
+						<td align="left">'.$datarow['Bk-start'].'</td>
+						<td align="left">'.$datarow['Bk-end'].'</td>
 						<td align="left">'.$datarow['Institution'].'</td></tr>';
 		//		echo "Key: ".$key." Data: ".$data[1]."<br />";
 		}
