@@ -1,3 +1,12 @@
+<?php 
+
+include ("global.php");
+include ("layout.php");
+include ("functions.php");
+
+
+top();			
+?>
 <html>
 <head>
 <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
@@ -14,16 +23,12 @@
 </head>
 
 <body>
-<?php 
 
-include ("global.php");
-include ("layout.php");
-include ("functions.php");
-
-top();			
-?>
 <?php
-if ($_SESSION["AUTH_USER"]==true)
+
+
+
+if (@$_SESSION["AUTH_USER"]==true)
 {
 
 	$bg = '#eeeeee'; // Set the background color.

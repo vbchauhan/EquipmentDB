@@ -22,6 +22,80 @@ elseif ($_GET['updatetype']=='delitem')
 	$result = mysql_query($query);
 }
 
+if($_GET['updatetype'] == 'updateprogram')
+{
+	$query = "Update Programs_Department SET Department_Name ='".$_GET['Department_Name']."' where Programs_Department_ID ='".$_GET['Program_ID']."'";
+	$result = mysql_query($query);
 
+}
+else if($_GET['updatetype'] == 'addprogram')
+{
+	$query = "Insert into Programs_Department (Department_Name) values ('".$_GET['Department_Name']."')";
+	echo $query;
+	$result = mysql_query($query);
+
+}
+elseif ($_GET['updatetype']=='delprogram')
+{
+	$query ="Delete from Programs_Department where Department_Name ='".$_GET['Department_Name']."'";
+	$result = mysql_query($query);
+}
+
+if($_GET['updatetype'] == 'updateinstitution')
+{
+	$query = "Update Institutions SET Name ='".$_GET['Institution_Name']."' where Institutions_ID ='".$_GET['Institution_ID']."'";
+	$result = mysql_query($query);
+
+}
+else if($_GET['updatetype'] == 'addinstitution')
+{
+	$query = "Insert into Institutions (Name) values ('".$_GET['Institution_Name']."')";
+	echo $query;
+	$result = mysql_query($query);
+
+}
+elseif ($_GET['updatetype']=='delinstitution')
+{
+	$query ="Delete from Institutions where Name ='".$_GET['Institution_Name']."'";
+	$result = mysql_query($query);
+}
+
+if($_GET['updatetype'] == 'updateitemtype')
+{
+	$query = "Update Item_Type SET Description ='".$_GET['Description']."' where Item_Type_ID ='".$_GET['Item_Type_ID']."'";
+	$result = mysql_query($query);
+
+}
+else if($_GET['updatetype'] == 'additemtype')
+{
+	$query = "Insert into Item_Type (Description) values ('".$_GET['Description']."')";
+	echo $query;
+	$result = mysql_query($query);
+
+}
+elseif ($_GET['updatetype']=='delitemtype')
+{
+	$query ="Delete from Item_Type where Description ='".$_GET['Description']."'";
+	$result = mysql_query($query);
+}
+
+if($_GET['updatetype'] == 'updateusertype')
+{
+	$query = "Update User_Types SET Description ='".$_GET['Description']."' where Type_ID ='".$_GET['Type_ID']."'";
+	$result = mysql_query($query);
+
+}
+else if($_GET['updatetype'] == 'addusertype')
+{
+	$query = "Insert into User_Types (Description) values ('".$_GET['Description']."')";
+	echo $query;
+	$result = mysql_query($query);
+
+}
+elseif ($_GET['updatetype']=='delusertype')
+{
+	$query ="Delete from User_Types where Description ='".$_GET['Description']."'";
+	$result = mysql_query($query);
+}
 
 ?>

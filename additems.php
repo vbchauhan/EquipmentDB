@@ -88,14 +88,14 @@ function addItemInformation()
 function editInformation(barcode,serial,description,type)
 {
 	
-	console.log(serial);
+	console.log(description);
 	
 	$("#additem").html("");
 	$("#additem").append( '<form onSubmit = "submititem(1)"> '+
 			'<label>Barcode</label>'+
 			'<input type = "text" id = "barcode" value = '+barcode+' readonly/><br>'+
 			'<label>Serial Number</label><input type = "text" id = "serial" value = '+serial+' length = 20/><br>'+
-			'<label>Description</label><input type = "text" id = "description" value = '+description+' /><br>'+
+			'<label>Description</label><input type = "text" id = "description" value = "'+description+'" /><br>'+
 			'<label>Item Type</label><select id = "typedesc"></select><br>'+
 			'<input type = "submit" value = "Submit" />'+
 			'</form>'
@@ -117,10 +117,12 @@ function editInformation(barcode,serial,description,type)
 		buttons: {
 		Ok: function() {
 		$(this).dialog('close');
+		location.reload();
 		} //end OK button
 		}//end buttons
-
+		
 		});//end dialog
+	
 	
 }
 </script>
@@ -151,14 +153,14 @@ $nums = mysql_num_rows($result);
 			{
 				
 			$row = @mysql_fetch_array($result);
-			
+
 		echo '<tr>';
 		echo '<INPUT TYPE="hidden" NAME="action" VALUE="del">';
 		echo '<TD  NOWRAP valign="middle" ALIGN="left">'.$row["Barcode"].'&nbsp;</TD>';
 		echo '<TD  NOWRAP valign="middle" ALIGN="left">'.$row["Description"].'&nbsp;</TD>';
 		echo '<TD  NOWRAP valign="middle" ALIGN="left">'.$row["Serial_number"].'&nbsp;</TD>';
 		echo '<TD  NOWRAP valign="middle" ALIGN="left">'.get_item_type_desc($row["Item_Type_ID"]).'&nbsp;</TD>';
-		echo '<TD WIDTH="100"  ALIGN="center"><input type = "button" value = "Edit" onClick = "editInformation('.$row['Barcode'].','.$row['Serial_number'].',\''.$row['Description'].'\',\''.get_item_type_desc($row["Item_Type_ID"]).'\')"></TD>';					
+		echo '<TD WIDTH="100"  ALIGN="center"><input type = "button" value = "Edit" onClick = "editInformation('.$row['Barcode'].','.$row['Serial_number'].',\''.$row["Description"].'\',\''.get_item_type_desc($row["Item_Type_ID"]).'\')"></TD>';					
 		echo '<TD WIDTH="100"  ALIGN="center"><input type = "button" onClick = "deleteitem('.$row['Barcode'].')" value = "Delete"></TD>';
 		echo '</tr>';
 		

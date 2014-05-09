@@ -20,21 +20,24 @@ function top()
 	<div id="container">
 		<div id="topnavi">
     		<?php 
-    		//	if (@$_SESSION["AUTH_USER"]==true) {
+    			if (@$_SESSION["AUTH_USER"]==true) {
 						print '<a href="/equipmentdb/logout.php">LOGOFF</a>';
 						print '<a href="/equipmentdb/view_request_home.php">View Requests</a>';
-				/*		}
+						print '<a href="/equipmentdb/">Loan System</a>';
+						print '<a href="/equipmentdb/generate_report.php">Reports</a>';
+						print '<a href="/equipmentdb/admin.php">Admin</a>';
+						}
 					else
 						{
 						$LoginSelectStr='';
 						if ($CurrentRequestURLarr[2]=="login") $LoginSelectStr=' class="selected"';
 						print '<a href="/equipmentdb/login.php"'.$LoginSelectStr.'>LOGIN</a>';
 						
-						}*/
+						}
 						?>
-			<a href="/<?php echo "equipmentdb";?>"<?php if ($CurrentRequestURLarr[2]=="") print ' class="selected"'?>>Loan System</a>
+			<!-- <a href="/<?php //echo "equipmentdb";?>"<?php //if ($CurrentRequestURLarr[2]=="") print ' class="selected"'?>>Loan System</a>
 			<a href="/equipmentdb/generate_report.php">Reports</a>;
-			<a href="/<?php echo "equipmentdb/admin.php";?>"<?php ?>>Admin</a>
+			<a href="/<?php //echo "equipmentdb/admin.php";?>"<?php ?>>Admin</a> -->
 
             
             <?php 

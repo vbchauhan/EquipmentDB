@@ -9,7 +9,7 @@ top();
 <BR>
 <div align="center">
 <table width="350" border="0">
-		<tr>
+	<!--  	<tr>
 			<td align="center" CLASS="tablebody">
 				<FORM NAME="form1" METHOD="post" ACTION="people.php">
 				<INPUT TYPE="hidden" NAME="action" VALUE="list">
@@ -19,7 +19,7 @@ top();
 				</FORM>
                 This manages the user accounts used to login to the Asset Loan System.<BR><BR>       
             </td>
-		</tr>
+		</tr>-->
 		<tr>
 			<td align="center" CLASS="tablebody">
 				<FORM NAME="form2" METHOD="post" ACTION="additems.php">
@@ -32,28 +32,36 @@ top();
 		</tr>
 		<tr>
 			<td align="center" CLASS="tablebody">
-				<FORM NAME="form3" METHOD="post" ACTION="loangroups.php">
+				<FORM NAME="form3" METHOD="post" ACTION="programs.php">
 				<INPUT TYPE="hidden" NAME="action" VALUE="list">
 				<INPUT TYPE="hidden" NAME="Submit" VALUE="Submit">
-	   	    &nbsp;<INPUT TYPE="submit" NAME="Submit" VALUE="MANAGE ITEM GROUPS">
+	   	    &nbsp;<INPUT TYPE="submit" NAME="Submit" VALUE="MANAGE PROGRAMS/DEPARTMENT">
 				</FORM>
-              	This Manages the Item groups that are available to be used.<BR><BR>
+              	This Manages the Program/Departments.<BR><BR>
             </td>
 		</tr>
 		<tr>
 			<td align="center" CLASS="tablebody">
-				<FORM NAME="form3" METHOD="post" ACTION="/equipment/reporting/index.php">
-	   	    &nbsp;<INPUT TYPE="submit" NAME="Submit" VALUE="SYSTEM REPORTS AND STAFF LISTS">
+				<FORM NAME="form3" METHOD="post" ACTION="itemtype.php">
+	   	    &nbsp;<INPUT TYPE="submit" NAME="Submit" VALUE="MANAGE ITEM TYPE">
 				</FORM>
-              	This section contains report for things like "who used an item", "what items does somone use" and staff lists.<BR><BR>
+              	This section Manages Item Type.<BR><BR>
             </td>
 		</tr>
 		<tr>
 			<td align="center" CLASS="tablebody">
-				<FORM NAME="form3" METHOD="post" ACTION="/equipment/reporting/enterHistory.php">
-	   	    &nbsp;<INPUT TYPE="submit" NAME="Submit" VALUE="Enter Previous Records">
+				<FORM NAME="form3" METHOD="post" ACTION="usertype.php">
+	   	    &nbsp;<INPUT TYPE="submit" NAME="Submit" VALUE="MANAGE USER TYPE">
 				</FORM>
-              	This section will let user to enter the history records to the Logs<BR><BR>
+              	This section manages User Types<BR><BR>
+            </td>
+		</tr>
+		<tr>
+			<td align="center" CLASS="tablebody">
+				<FORM NAME="form3" METHOD="post" ACTION="institution.php">
+	   	    &nbsp;<INPUT TYPE="submit" NAME="Submit" VALUE="MANAGE INSTITUTIONS">
+				</FORM>
+              	This section manages Institutions<BR><BR>
             </td>
 		</tr>
 </table>

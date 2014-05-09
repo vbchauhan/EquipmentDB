@@ -57,7 +57,7 @@ else
 $user_type = get_user_type_id($utype);
 $inst = get_institution_id($institution);
 $program = get_programs_id($department);
-echo $program;
+//echo $program;
 $add_user_query=" INSERT INTO Users
 (First_Name,Last_Name,Phone_Number,Email,Barcode_ID,Type_ID,Programs_Department_ID,Institutions_ID)
 VALUES
@@ -113,5 +113,39 @@ else
 	
 	Thank you for using the iPad request System';
 	
+	$to = $email;
+	$subject = 'Priddy Reserves - Book Request Details';
+	
+	$body = 'Dear Patron '.$fname.' '.$lname.',
+	
+	Thank you for making a request for the Equipment. Your Details are as follows:
+		
+	Request # : '.$mysql_insert_id().'
+	Equipment : '.$itemtype.'
+	No of Equipment : '.$items.'
+	Barcode : '.$barcode.'
+		
+	Thank You, 
+	Priddy Reserves
+
+	NOTE: This is an auto-generated email. Please contact Madhu Singh at madhus@umd.edu for any further assistance. You might be requested to provide your Request # for faster processing of your queries.';
+	
+	$from = 'From: Priddy Reserves';
+	mail($to, $subject, $body, $from);
+	
+	// Emailing Request Information to Madhu
+	$to = 'madhus@umd.edu,priddyreserves@umd.edu,vchauhan@umd.edu';
+	$subject = 'New Book Request';
+	$body = '
+	A new Equipment Request has been made by '.$fname.' '.$lname.'[Email: '.$email.'] via the Priddy Reserves System. The request details are as follows:
+		
+		
+	Request # : '.$mysql_insert_id().'
+	Equipment : '.$itemtype.'
+	No of Equipment : '.$items.'
+	Barcode : '.$barcode.'
+	
+';
+	mail($to, $subject, $body, $from);
 	}
 ?>

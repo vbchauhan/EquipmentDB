@@ -27,7 +27,6 @@ if ($action=='submitpw')
 	{
 
 	$CheckQuery = "select l.username,l.password,u.Type_ID,u.First_Name,u.Last_Name FROM login l join users u on l.Users_ID = u.Users_ID AND l.username='".strtolower($fuid)."'";
-	echo $CheckQuery;
 	$CheckResult = @mysql_query($CheckQuery);
 	$CheckNum = mysql_num_rows($CheckResult);
 	If ($CheckNum>=1)
@@ -36,11 +35,9 @@ if ($action=='submitpw')
 			{
 			if (($fpw)==$CheckRow["password"])
 				{
-				//$_SESSION["SystemNameStr"]='abdc';
 				$_SESSION["AUTH_USER"]= true;
 				//$_SESSION['AUTH_USER_NAME']=$CheckRow["First_Name"].' '.$CheckRow["Last_Name"];
 				//$_SESSION["AUTH_USER_TYPE"]='ADMIN';
-				$message = $CheckQuery;
 				//download_aleph_data();
 				Header("Location: index.php"); 
 				//exit;
@@ -48,7 +45,7 @@ if ($action=='submitpw')
 			else
 				{
 				$message = 'Invalid loginid or password!';
-				$_SESSION["AUTH_USER"]="";
+				$_SESSION["AUTH_USER"]=false;
 				} 
 			}
 		}
@@ -59,7 +56,7 @@ top();
 <BR><H1 align="left">SYSTEM LOGIN PAGE</H1><BR>
 <BR>
 <div align="center">
-<form name="form1" method="post" action="#">
+<form name="form1" method="post" action="login.php">
 <INPUT TYPE="hidden" NAME="action" VALUE="submitpw">
 <?PHP	if (@$message) 
 			print '<font class="messagetext"><b>'.$message.'&nbsp;</b></font>';

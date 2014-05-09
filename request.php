@@ -110,13 +110,13 @@ if (a==null || a=="" || b==null || b=="" || c==null || c=="" || d==null || d==""
 						{
 						$LoginSelectStr='';
 						if ($CurrentRequestURLarr[2]=="login") $LoginSelectStr=' class="selected"';
-						print '<a href="/'.strtolower($_SESSION["SystemNameStr"]).'/login/index.php"'.$LoginSelectStr.'>Staff LOGIN</a>'; 
+						print '<a href="/'.strtolower($_SESSION["SystemNameStr"]).'/login.php"'.$LoginSelectStr.'>Staff LOGIN</a>'; 
 						}?>
 			<a href="/<?php echo strtolower($_SESSION["SystemNameStr"])?>"<?php if ($CurrentRequestURLarr[2]=="") print ' class="selected"'?>></a>
             
 	</div>	
 </div>	
-<h1>IPAD Request Form</h1>
+<h1>Equipment Request Form</h1>
 <label id="NoUserFound" style = "width :100%"></label><br>
 <input type='button' name='getuserinfo' id = 'getuserinfo' onClick = "getUserInfo()" value = "Get Information"/>
 <form name="registration" action="sendRequest.php" method="post" onsubmit="return validateForm(this)">
@@ -129,19 +129,19 @@ if (a==null || a=="" || b==null || b=="" || c==null || c=="" || d==null || d==""
 		
 		<tr>
 			<td><label for='fname' ><b>First Name:</b></label></td>
-			<td><input type='text' name='fname' id='fname' maxlength="50" style="width:98%" /></td>
+			<td><input type='text' name='fname' id='fname' maxlength="50" style="width:98%" required/></td>
 		</tr>
 		<tr>
 			<td><label for='Last Name' ><b>Last Name:</b></label></td>
-			<td><input type='text' name='lname' id='lname' maxlength="50" style="width:98%"/></td>
+			<td><input type='text' name='lname' id='lname' maxlength="50" style="width:98%"/ required></td>
 		</tr>
 		<tr>
 			<td><label for='Email' ><b>Email:</b></label></td>
-			<td><input type='text' name='email' id='email' maxlength="50" style="width:98%"/></td>
+			<td><input type='text' name='email' id='email' maxlength="50" style="width:98%"/ required></td>
 		</tr>
 		<tr>
 			<td><label for='Email' ><b>Phone Number:</b></label></td>
-			<td><input type='text' name='pno' id='pno' maxlength="50" style="width:98%"/></td>
+			<td><input type='text' name='pno' id='pno' maxlength="50" style="width:98%"/ required></td>
 		</tr>
 		<tr>
 			<td>
@@ -218,9 +218,16 @@ if (a==null || a=="" || b==null || b=="" || c==null || c=="" || d==null || d==""
 			<td><input type='text' name='items' id='items' maxlength="50" style="width:98%"/></td>
 		</tr>
 		<tr>
+		
+			<td colspan="2" style ="font-size :0.8em">
+				<input type='checkbox' id ="agreecheck" /><b>I agree to the Equipment Loan <a style = "color: blue;text-decoration : underline" href = "termsandcondition.php">Terms and Conditions</b></a>
+			</td>
+		</tr>
+		<tr>
 			<td colspan="2" align="center">
 				<input type='submit' value='Submit Request'/>
 			</td>
+			
 		</tr>
 	</table>
 	

@@ -65,10 +65,10 @@ $data = download_aleph_data();
 //echo $data[0]['Title'];
 $sql = array();
 foreach ($data as $datarow){
-	$sql[] = '("'.$datarow['Title'].'","'.$datarow['Barcode'].'","'.$datarow['Callno'].'","'.$datarow['IS'].'","'.$datarow['Last_return'].'","'.$datarow['Loan'].'","'.$datarow['Due'].'","'.ltrim($datarow['User'],'0').'","'.$datarow['Status'].'","'.$datarow['Institution'].'")';
+	$sql[] = '("'.$datarow['Title'].'","'.$datarow['Barcode'].'","'.$datarow['Callno'].'","'.$datarow['IS'].'","'.$datarow['Last_return'].'","'.$datarow['Loan'].'","'.$datarow['Due'].'","'.ltrim($datarow['User'],'0').'","'.$datarow['Status'].'","'.$datarow['Institution'].'","'.$datarow['Bk-start'].'","'.$datarow['Bk-end'].'")';
 }
 mysql_query('Truncate table aleph_data');
-$abc = mysql_query('INSERT INTO aleph_data (Title, Barcode,Callno,IS_no,Last_return,Loan,Due,Aleph_ID,Status_id,Institution) VALUES '.implode(',', $sql));
+$abc = mysql_query('INSERT INTO aleph_data (Title, Barcode,Callno,IS_no,Last_return,Loan,Due,Aleph_ID,Status_id,Institution,Booking_date_from,Booking_date_to) VALUES '.implode(',', $sql));
 
 $query = "SELECT Request_ID,No_of_items,Request_Date,Users_ID,Item_Type_ID FROM request order by $sort $order ";
 $result = mysql_query($query); // Run the query.
@@ -76,7 +76,7 @@ echo '<table cellpadding="0" cellspacing="0" class="db-table"> <tr>';
 if ($order=="asc"){
 echo '<table align="center" cellspacing="0" cellpadding="5">
 <tr class = "BackgroundColorChange">
-	<td align="left"><a href="view_requests.php?sort=Aleph_ID&order=asc" class = "Textwhite"><b>User ID</b></a></td>				
+	<td align="left"><a href="" class = "Textwhite"><b>User ID</b></a></td>				
 	<td align="left"><a href="view_requests.php?sort=First_Name&order=desc" class = "Textwhite"><b>First Name</b></a></td>
 	<td align="left"><a href="view_requests.php?sort=lname&order=desc" class = "Textwhite"><b>Last Name</a></b></a></td>
 	<td align="left"><a href="view_requests.php?sort=barcode&order=desc" class = "Textwhite"><b>Barcode</b></a></td>
@@ -88,7 +88,7 @@ echo '<table align="center" cellspacing="0" cellpadding="5">
 	<td align="left"><a href="view_requests.php?sort=request_date&order=desc" class = "Textwhite"><b>Request Date</b></a></td>
 	<td align="left"><a href="view_requests.php?sort=ipads&order=desc" class = "Textwhite"><b>Item Type Requested</b></a></td>
 	<td align="left"><a href="view_requests.php?sort=ipads&order=desc" class = "Textwhite"><b>No Of Items</b></a></td>
-	<td align="left"><b>Status</b></td>
+	<!--<td align="left"><b>Status</b></td>-->
 	<td align="left"><b>Action</b></td>
 	
 </tr>';
@@ -96,7 +96,7 @@ echo '<table align="center" cellspacing="0" cellpadding="5">
 else{
 echo '<table align="center" style = "background-color :#564b47; color : white" cellspacing="0" cellpadding="5">
 <tr class = "BackgroundColorChange">
-	<td align="left"><a href="view_requests.php?sort=Aleph_ID&order=asc" class = "Textwhite"><b>User ID</b></a></td>	
+	<td align="left"><a href="" class = "Textwhite"><b>User ID</b></a></td>	
 	<td align="left"><a href="view_requests.php?sort=First_Name&order=asc" class = "Textwhite"><b>First Name</b></a></td>
 	<td align="left"><a href="view_requests.php?sort=lname&order=asc" class = "Textwhite"><b>Last Name</a></b></a></td>
 	<td align="left"><a href="view_requests.php?sort=barcode&order=asc" class = "Textwhite"><b>Barcode</b></a></td>
@@ -108,7 +108,7 @@ echo '<table align="center" style = "background-color :#564b47; color : white" c
 	<td align="left"><a href="view_requests.php?sort=request_date&order=asc" class = "Textwhite"><b>Request Date</b></a></td>
 	<td align="left"><a href="view_requests.php?sort=ipads&order=asc" class = "Textwhite"><b>Item Type Requested</b></a></td>
 	<td align="left"><a href="view_requests.php?sort=ipads&order=asc" class = "Textwhite"><b>No Of Items</b></a></td>	
-	<td align="left"><b>Status</b></td>
+	<!--<td align="left"><b>Status</b></td>-->
 	<td align="left"><b>Action</b></td>
 	
 </tr>';
@@ -131,12 +131,12 @@ if($userRow['Aleph_ID'] != '')
 		$query_item = "SELECT * FROM items where barcode =".$alephRow['Barcode'];
 		$itemResult = mysql_query($query_item); // Run the query.
 		$itemRow = mysql_fetch_array($itemResult, MYSQL_ASSOC);
-		$queryUpdate = "Insert into loans (Loan_Date , Return_Date , Due_Date , Request_accept_date , Booking_date_from , Booking_date_to , Request_ID , Items_ID , Users_ID )	values ('".date('Y-m-d',strtotime($alephRow['Loan']))."','".date('Y-m-d',strtotime($alephRow['Due']))."','".date('Y-m-d',strtotime($alephRow['Due']))."','".$row['Request_Date']."','".date('Y-m-d',strtotime($alephRow['Loan']))."','".date('Y-m-d',strtotime($alephRow['Loan']))."','".$row['Request_ID']."','".$itemRow['Items_ID']."','".$userRow['Users_ID']."');";
+		$queryUpdate = "Insert into loans (Loan_Date , Return_Date , Due_Date , Request_accept_date , Booking_date_from , Booking_date_to , Request_ID , Items_ID , Users_ID )	values ('".date('Y-m-d',strtotime($alephRow['Loan']))."','".date('Y-m-d',strtotime($alephRow['Due']))."','".date('Y-m-d',strtotime($alephRow['Due']))."','".$row['Request_Date']."','".date('Y-m-d',strtotime($alephRow['Booking_date_from']))."','".date('Y-m-d',strtotime($alephRow['Booking_date_to']))."','".$row['Request_ID']."','".$itemRow['Items_ID']."','".$userRow['Users_ID']."');";
 		mysql_query($queryUpdate);
-		echo "Success";
+		//echo "Success";
 	}
-	else
-		echo "Error";
+	//else
+		//echo "Error";
 }
 
 	$bg = ($bg=='#eeeeee' ? '#ffffff' : '#eeeeee'); // Switch the background color.
@@ -154,7 +154,7 @@ if($userRow['Aleph_ID'] != '')
 		<td align="left">' . get_item_type_desc($row['Item_Type_ID']) . '</td>
 		<td align="left">' . $row['No_of_items'] . '</td>
 		<td align="left"><a href="editRequest.php?id=' . $row['Request_ID'] . '" target="_blank"> <img src="images/edit-icon.png" width="32" height="32"></a></td>
-		<td align="left"><a href="test.php" onclick = "compareitems()">Reserve</a></td>
+		<!--<td align="left"><a href="test.php" onclick = "compareitems()">Reserve</a></td>-->
 		<td align="left"><a href="view_requests.php?id=' . $row['Request_ID'] . '&cancel=1" onclick="confirmdelete()"><img src="images/delete-icon.png" width="32" height="32"></a></td>
 		</tr>
 	';
