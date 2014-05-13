@@ -123,25 +123,25 @@ if (a==null || a=="" || b==null || b=="" || c==null || c=="" || d==null || d==""
 	<table border="1">
 		<tr>
 			<td><label for='barcode' ><b>Barcode:</b></label></td>
-			<td><input type='text' name='barcode' id='barcode' maxlength="50" style="width:98%"/></td>
+			<td><input type='number' name='barcode' id='barcode' max="99999999999999" style="width:98%"/ placeholder="Barcode Number"></td>
 			
 		</tr>
 		
 		<tr>
 			<td><label for='fname' ><b>First Name:</b></label></td>
-			<td><input type='text' name='fname' id='fname' maxlength="50" style="width:98%" required/></td>
+			<td><input type='text' name='fname' id='fname' maxlength="50" style="width:98%" required placeholder="First Name"/></td>
 		</tr>
 		<tr>
 			<td><label for='Last Name' ><b>Last Name:</b></label></td>
-			<td><input type='text' name='lname' id='lname' maxlength="50" style="width:98%"/ required></td>
+			<td><input type='text' name='lname' id='lname' maxlength="50" style="width:98%"/ required placeholder="Last Name"></td>
 		</tr>
 		<tr>
 			<td><label for='Email' ><b>Email:</b></label></td>
-			<td><input type='text' name='email' id='email' maxlength="50" style="width:98%"/ required></td>
+			<td><input type='text' name='email' id='email' maxlength="50" style="width:98%"/ required placeholder="Enter a valid email address"></td>
 		</tr>
 		<tr>
-			<td><label for='Email' ><b>Phone Number:</b></label></td>
-			<td><input type='text' name='pno' id='pno' maxlength="50" style="width:98%"/ required></td>
+			<td><label for='phone' ><b>Phone Number:</b></label></td>
+			<td><input type='number' name='pno' id='pno' maxlength="10" style="width:98%"/ required placeholder="Enter a valid phone number"></td>
 		</tr>
 		<tr>
 			<td>
@@ -215,7 +215,7 @@ if (a==null || a=="" || b==null || b=="" || c==null || c=="" || d==null || d==""
 		</tr>
 		<tr>
 			<td><label for='No of Items:' ><b> No. of Items :</b></label></td>
-			<td><input type='text' name='items' id='items' maxlength="50" style="width:98%"/></td>
+			<td><input type='number' name='items' id='items' max="25" style="width:98%"/ placeholder="Quantity"></td>
 		</tr>
 		<tr>
 		
