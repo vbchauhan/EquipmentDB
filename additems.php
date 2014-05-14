@@ -33,6 +33,7 @@ function submititem(param)
 
 function deleteitem(data)
 {
+
 	var isOk = window.confirm("Are you sure?");
 
 	if(isOk) {
@@ -40,9 +41,12 @@ function deleteitem(data)
 	
 	$.ajax({
 		url :'update.php',
+		
 		data : {updatetype:'delitem', Barcode:data},
 		success:function(result){
 			location.reload();
+			alert(result);
+			
 		}
 	});
 	}

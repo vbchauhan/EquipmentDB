@@ -62,10 +62,14 @@ console.log(data);
 </head>
 
 <body>
-<div id="banner" "style:width="90%"";>EQUIPMENT LOAN SYSTEM</div>
+<div id="banner" "style:width="90%"";>EQUIPMENT MANAGEMENT SYSTEM</div>
 	<div id="topnavi">
 	<div id="topnavi">
-    		<?PHP 
+			<a href="/<?php echo strtolower($_SESSION["SystemNameStr"])?>"<?php if ($CurrentRequestURLarr[2]=="") print ' class="selected"'?>>Home</a>
+ 			<a href="/<?php echo strtolower($_SESSION["SystemNameStr"])?>/view_requests.php"<?php if ($CurrentRequestURLarr[2]=="webadmin") print ' class="selected"'?>>View Requests</a> 
+			
+			<a href="/<?php echo strtolower($_SESSION["SystemNameStr"])?>/reserved.php?refresh=1"<?php ?>>Refresh</a>
+			    		<?PHP 
     		if (@$_SESSION["AUTH_USER"]==true) 
 						print '<a href="/'.strtolower($_SESSION["SystemNameStr"]).'/logout.php">LOGOFF</a>';
 					else
@@ -74,13 +78,13 @@ console.log(data);
 						if ($CurrentRequestURLarr[2]=="login") $LoginSelectStr=' class="selected"';
 						print '<a href="/'.strtolower($_SESSION["SystemNameStr"]).'/index.php"'.$LoginSelectStr.'>LOGIN</a>'; 
 						}?>
- 			<a href="/<?php echo strtolower($_SESSION["SystemNameStr"])?>/view_request_home.php"<?php if ($CurrentRequestURLarr[2]=="webadmin") print ' class="selected"'?>>View Requests</a> 
-			<a href="/<?php echo strtolower($_SESSION["SystemNameStr"])?>"<?php if ($CurrentRequestURLarr[2]=="") print ' class="selected"'?>>Home</a>
-			<a href="/<?php echo strtolower($_SESSION["SystemNameStr"])?>/view_requests.php"<?php ?>>Refresh</a>
 	</div>	
 </div>	
 <H1>  </H1>
 <?php
+if ($_GET['refresh'] == 1)
+	refresh();
+
 $query = "select Loan_Date, count(Items_ID) as Total_Items, Request_ID, Users_ID from loans where Loan_Date >= now()-interval 3 month group by Request_ID";
 $result = mysql_query($query); // Run the query.
 echo '<table cellpadding="0" cellspacing="0" class="db-table"> <tr>';
@@ -96,9 +100,7 @@ echo '<table align="center" cellspacing="0" cellpadding="5">
 	<td align="left"><b>Institutions</b></td>
 	<td align="left"><b>Department</b></td>
 	<td align="left"><b>Request Date</b></td>
-	<td align="left"><b>Date Needed</b></td>
 	<td align="left"><b>#iPad_Requested</b></td>
-	<td align="left"><b>Status</b></td>
 	<td align="left"><b>Action</b></td>
 	
 </tr>';
@@ -114,16 +116,14 @@ while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 	echo '<tr bgcolor="' . $bg . '"class = "tablecontent">
 		<td align="left">' . $userRow['First_Name']. '</td>
 		<td align="left">' . $userRow['Last_Name']. '</td>
-		<td align="left">' . $userRow['Barcode_ID']. '</td>
+		<td align="left" style = "text-align:center">' . $userRow['Barcode_ID']. '</td>
 		<td align="left">' . $userRow['Email']. '</td>
-		<td align="left">' . $userRow['Phone_Number'] . '</td>
-		<td align="left">' . get_user_type_desc($userRow['Type_ID']). '</td>
-		<td align="left">' . get_institution_name($userRow['Institutions_ID']) . '</td>
+		<td align="left" style = "text-align:center">' . $userRow['Phone_Number'] . '</td>
+		<td align="left" style = "text-align:center">' . get_user_type_desc($userRow['Type_ID']). '</td>
+		<td align="left" style = "text-align:center">' . get_institution_name($userRow['Institutions_ID']) . '</td>
 		<td align="left">' . get_programs_name($userRow['Programs_Department_ID']) . '</td>
-		<td align="left">' . $row['Loan_Date'] . '</td>
-		<td align="left">' . $row['ipad_date'] . '</td>
-		<td align="left"><b>' . $row['Total_Items'] . '</b></td>
-		<td align="left">' . $row['status'] . '</td>
+		<td align="left" style = "text-align:center">' . $row['Loan_Date'] . '</td>
+		<td align="left" style = "text-align:center"><b>' . $row['Total_Items'] . '</b></td>
 		<td align="left"><a href="reserved.php?data=' . $row['Request_ID'] . '">Details</td>
 		</tr>
 	';

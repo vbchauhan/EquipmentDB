@@ -102,7 +102,7 @@ if (a==null || a=="" || b==null || b=="" || c==null || c=="" || d==null || d==""
 
 </script>
 </head>
-<div id="banner" "style:width="90%"";>EQUIPMENT LOAN SYSTEM</div>
+<div id="banner" "style:width="90%"";>EQUIPMENT MANAGEMENT SYSTEM</div>
 	<div id="topnavi">
     		<?PHP if (@$_SESSION["AUTH_USER"]==true) 
 						print '<a href="/'.strtolower($_SESSION["SystemNameStr"]).'/login/logout.php">LOGOFF</a>';
@@ -123,10 +123,15 @@ if (a==null || a=="" || b==null || b=="" || c==null || c=="" || d==null || d==""
 	<table border="1">
 		<tr>
 			<td><label for='barcode' ><b>Barcode:</b></label></td>
-			<td><input type='number' name='barcode' id='barcode' max="99999999999999" style="width:98%"/ placeholder="Barcode Number"></td>
+			<td><input type='number' name='barcode' id='barcode' max="99999999999999" style="width:98%"/ required placeholder="Barcode Number"></td>
 			
 		</tr>
+		<tr>
 		
+			<td colspan="2" style ="font-size :0.8em">
+				<b>Click <a target="_blank" style = "color: blue;text-decoration : underline" href = "http://shadygrove.umd.edu/library/services/find-lib-barcode">Here</a> to find your Library Barcode Number</b>
+			</td>
+		</tr>
 		<tr>
 			<td><label for='fname' ><b>First Name:</b></label></td>
 			<td><input type='text' name='fname' id='fname' maxlength="50" style="width:98%" required placeholder="First Name"/></td>
@@ -141,7 +146,7 @@ if (a==null || a=="" || b==null || b=="" || c==null || c=="" || d==null || d==""
 		</tr>
 		<tr>
 			<td><label for='phone' ><b>Phone Number:</b></label></td>
-			<td><input type='number' name='pno' id='pno' maxlength="10" style="width:98%"/ required placeholder="Enter a valid phone number"></td>
+			<td><input type='number' name='pno' id='pno' maxlength="10" style="width:98%"/ placeholder="Enter a valid phone number"></td>
 		</tr>
 		<tr>
 			<td>
@@ -195,7 +200,7 @@ if (a==null || a=="" || b==null || b=="" || c==null || c=="" || d==null || d==""
 		</tr>
 		<tr>
 			<td><label for='Date needed' ><b>Date needed:</b></label></td>
-			<td><input type='date' name='request_date' id='request_date' maxlength="50" style="width:98%"/></td>
+			<td><input type='date' name='request_date' id='request_date' value = "<?php echo date('Y-m-d'); ?>" maxlength="50" style="width:98%"/></td>
 		</tr>
 		<tr>
 			<td><label for='itemtype' ><b>Item Type:</b></label></td>
@@ -215,12 +220,12 @@ if (a==null || a=="" || b==null || b=="" || c==null || c=="" || d==null || d==""
 		</tr>
 		<tr>
 			<td><label for='No of Items:' ><b> No. of Items :</b></label></td>
-			<td><input type='number' name='items' id='items' max="25" style="width:98%"/ placeholder="Quantity"></td>
+			<td><input type='number' name='items' id='items' max="25" style="width:98%"/ value = "1" required placeholder="Quantity"></td>
 		</tr>
 		<tr>
 		
 			<td colspan="2" style ="font-size :0.8em">
-				<input type='checkbox' id ="agreecheck" /><b>I agree to the Equipment Loan <a style = "color: blue;text-decoration : underline" href = "termsandcondition.php">Terms and Conditions</b></a>
+				<input type='checkbox' id ="agreecheck" required/><b>I agree to the Equipment Loan <a style = "color: blue;text-decoration : underline" href = "termsandcondition.php">Terms and Conditions</b></a>
 			</td>
 		</tr>
 		<tr>

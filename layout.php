@@ -15,17 +15,18 @@ function top()
 
 <body>
 
-<div id="banner">EQUIPMENT LOAN SYSTEM</div>
+<div id="banner">EQUIPMENT MANAGEMENT SYSTEM</div>
 
 	<div id="container">
 		<div id="topnavi">
     		<?php 
     			if (@$_SESSION["AUTH_USER"]==true) {
-						print '<a href="/equipmentdb/logout.php">LOGOFF</a>';
-						print '<a href="/equipmentdb/view_request_home.php">View Requests</a>';
+						print '<a href="/equipmentdb/view_requests.php">View Requests</a>';
+						print '<a href="/equipmentdb/reserved.php">View Reservations</a>';
 						print '<a href="/equipmentdb/">Loan System</a>';
 						print '<a href="/equipmentdb/generate_report.php">Reports</a>';
 						print '<a href="/equipmentdb/admin.php">Admin</a>';
+						print '<a href="/equipmentdb/logout.php">LOGOFF</a>';
 						}
 					else
 						{

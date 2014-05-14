@@ -39,10 +39,13 @@ $id=$_GET["id"];
 <link rel="shortcut icon" href="/<?php echo strtolower($_SESSION["SystemNameStr"])?>/favicon.ico" type="image/x-icon">
 <title>Priddy Loan System</title>
 </head>
-<div id="banner" "style:width="90%"";>EQUIPMENT LOAN SYSTEM</div>
+<div id="banner" "style:width="90%"";>EQUIPMENT MANAGEMENT SYSTEM</div>
 	<div id="topnavi">
 	<div id="topnavi">
-    		<?php 
+			<a href="/<?php echo strtolower($_SESSION["SystemNameStr"])?>"<?php if ($CurrentRequestURLarr[2]=="") print ' class="selected"'?>>Home</a>
+ 			<a href="/<?php echo strtolower($_SESSION["SystemNameStr"])?>/reserved.php"<?php if ($CurrentRequestURLarr[2]=="webadmin") print ' class="selected"'?>>View Reservations</a> 
+			<a href="/<?php echo strtolower($_SESSION["SystemNameStr"])?>/view_requests.php"<?php ?>>Refresh</a>
+			    		<?php 
     		
     		if (@$_SESSION["AUTH_USER"]==true) 
 						print '<a href="/'.strtolower($_SESSION["SystemNameStr"]).'/logout.php">LOGOFF</a>';
@@ -52,9 +55,6 @@ $id=$_GET["id"];
 						if ($CurrentRequestURLarr[2]=="login") $LoginSelectStr=' class="selected"';
 						print '<a href="/'.strtolower($_SESSION["SystemNameStr"]).'/index.php"'.$LoginSelectStr.'>LOGIN</a>'; 
 						}?>
- 			<a href="/<?php echo strtolower($_SESSION["SystemNameStr"])?>/view_request_home.php"<?php if ($CurrentRequestURLarr[2]=="webadmin") print ' class="selected"'?>>View Requests</a> 
-			<a href="/<?php echo strtolower($_SESSION["SystemNameStr"])?>"<?php if ($CurrentRequestURLarr[2]=="") print ' class="selected"'?>>Home</a>
-			<a href="/<?php echo strtolower($_SESSION["SystemNameStr"])?>/view_requests.php"<?php ?>>Refresh</a>
 	</div>	
 </div>	
 <?php
@@ -153,9 +153,9 @@ if($userRow['Aleph_ID'] != '')
 		<td align="left">' . $row['Request_Date']. '</td>
 		<td align="left">' . get_item_type_desc($row['Item_Type_ID']) . '</td>
 		<td align="left">' . $row['No_of_items'] . '</td>
-		<td align="left"><a href="editRequest.php?id=' . $row['Request_ID'] . '" target="_blank"> <img src="images/edit-icon.png" width="32" height="32"></a></td>
+		<td align="left"><a href="editRequest.php?id=' . $row['Request_ID'] . '" target="_blank"> <img src="images/edit-icon.png" width="28" height="28"></a></td>
 		<!--<td align="left"><a href="test.php" onclick = "compareitems()">Reserve</a></td>-->
-		<td align="left"><a href="view_requests.php?id=' . $row['Request_ID'] . '&cancel=1" onclick="confirmdelete()"><img src="images/delete-icon.png" width="32" height="32"></a></td>
+		<td align="left"><a href="view_requests.php?id=' . $row['Request_ID'] . '&cancel=1" onclick="confirmdelete()"><img src="images/delete-icon.png" width="28" height="28"></a></td>
 		</tr>
 	';
 }

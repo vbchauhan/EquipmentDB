@@ -59,7 +59,7 @@ function draw_graph(){
   <option value="date">By Date</option>
   <option value="institution">By Institution</option>
   <option value="usertype">By User Type</option>
-  <option value="department">By Department</option>
+  <option value="department">By Program</option>
 </select><br>
 <label>Graph Type</label><br>
 <select id = "graphtype">

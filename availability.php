@@ -15,7 +15,7 @@ include ("functions.php");
 </head>
 <body>
 
-<div id="banner">EQUIPMENT LOAN SYSTEM</div>
+<div id="banner">EQUIPMENT MANAGEMENT SYSTEM</div>
 
 	<div id="container">
 		<div id="topnavi">

@@ -6,13 +6,7 @@
 include ("global.php");
 include ("layout.php");
 include ("functions.php");
-    include_once('phpMyGraph.php');
-    
-    //Set config directives
-    $cfg['title'] = 'Results by Date';
-    $cfg['width'] = 700;
-    $cfg['height'] = 500;
-    $cfg['average-line-visible'] = false;
+include ("phpgraphlib.php");
     
 	$date1 =$_GET['date1'];
 	
@@ -33,12 +27,36 @@ include ("functions.php");
 
     //echo print_r($data);
 
-    //Create phpMyGraph instance
-    $graph = new phpMyGraph();
+    //Create PHPGraphLib instance
+    $graph = new PHPGraphLib(700,500);
+	$graph->addData($data);
+	$graph->setTitle('Results by Date');
+	$graph->setLegend(true);
+	$graph->setXValuesHorizontal(true);
 	
     //Parse
     if($_GET['type'] == 'line')
-   		$graph->parseVerticalLineGraph($data, $cfg);
+    {
+   		$graph->setBars(false);
+		$graph->setLine(true);
+		$graph->setDataPoints(true);
+		$graph->setDataPointColor('maroon');
+		$graph->setDataValues(true);
+		$graph->setDataValueColor('maroon');
+		$graph->setGoalLine(.0025);
+		$graph->setGoalLineColor('red');
+    }
    	else
-   		$graph->parseVerticalColumnGraph($data, $cfg);
+   	{
+   		$graph->setBars(true);
+   		$graph->setDataPoints(true);
+   		$graph->setDataPointColor('maroon');
+   		$graph->setDataValues(true);
+   		$graph->setDataValueColor('maroon');
+   		$graph->setGoalLine(.0025);
+   		$graph->setGoalLineColor('red');
+   		$graph->setGradient('red', 'maroon');
+   	}
+   	
+   	$graph->createGraph();
 ?>

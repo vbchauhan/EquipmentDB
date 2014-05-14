@@ -44,7 +44,7 @@ if (a==null || a=="" || b==null || b=="" || c==null || c=="" || d==null || d==""
 
 </script>
 </head>
-<div id="banner" "style:width="90%"";>EQUIPMENT LOAN SYSTEM</div>
+<div id="banner" "style:width="90%"";>EQUIPMENT MANAGEMENT SYSTEM</div>
 <div id="topnavi">
     		<?PHP
 						
@@ -75,8 +75,7 @@ if (@$_SESSION ["AUTH_USER"] == true)
 		</tr>
 		<tr>
 			<td><label for='Last Name'><b>User ID:</b></label></td>
-			<td><input type='text' name='alephid' id='alephid'
-				value=<?php echo $userRow["Aleph_ID"] ?> maxlength="50"
+			<td><input type='text' name='alephid' id='alephid' 	value="<?php echo $userRow["Aleph_ID"] ?>" maxlength="50" placeHolder = "Get System ID from Aleph"
 				style="width: 98%" /></td>
 		</tr>
 		<tr>
