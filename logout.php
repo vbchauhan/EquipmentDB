@@ -29,7 +29,7 @@ $_SESSION["AUTH_USER"]='';
 
 //session_unset();
 session_destroy();
-$RedirStr="Location: /equipmentdb/";
+$RedirStr="Location: /".strtolower($_SESSION["SystemNameStr"])."/";
 Header($RedirStr);
 exit;
 ?>

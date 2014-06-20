@@ -1,7 +1,7 @@
 <?PHP
 ini_set('display_errors','0');
 ini_set('log_errors','0');
-//session_name("equipmentdb");
+//session_name("ems");
 session_start();
 $CurrentRequestURLarr = explode("/",$_SERVER['REQUEST_URI']);
 
@@ -13,7 +13,7 @@ $CurrentRequestURLarr = explode("/",$_SERVER['REQUEST_URI']);
 //include($_SERVER['HTTP_HOST']."/".strtolower($_SESSION["SystemNameStr"])."/protect/functions.php");
 
 // NAME OF THE LOAN SYSTEM (THIS WEEK)
-$_SESSION["SystemNameStr"]='EQUIPMENTDB';
+$_SESSION["SystemNameStr"]='ems';
 //$_SESSION["AUTH_USER"] = true;
 // Get MySQL Details
 //include_once($_SERVER['HTTP_HOST']."/".strtolower($_SESSION["SystemNameStr"])."/protect/config.php");
@@ -37,6 +37,6 @@ $mysqldbCheck = @fsockopen($mysqlserver, 3306, $errno, $errstr, 1);   //Check to
 		*/
 
 $dbok = mysql_connect('localhost', 'root', 'root');
-$db_selected = mysql_select_db('equipmentdb', $dbok);
+$db_selected = mysql_select_db('ems', $dbok);
 
 ?>

@@ -84,7 +84,7 @@ else
 <H3>
 <BR>
 <BR>
-To use this system you will need to login, <a href="/equipmentdb/login.php" target="_self">click here to login</a>.<b>(STAFF USE ONLY)</b><BR>
+To use this system you will need to login, <a href="/<?=strtolower($_SESSION["SystemNameStr"])?>/login.php" target="_self">click here to login</a>.<b>(STAFF USE ONLY)</b><BR>
 <BR> 
 <?php 
 
@@ -96,7 +96,7 @@ To use this system you will need to login, <a href="/equipmentdb/login.php" targ
 ?>
 <BR>
 <!--Otherwise you can see the status of items the loan system by <a href="/equipment/view/index.php" target="_self">clicking here for view only access</a>.-->
-To request a Hold on the iPad, please submit a request by filling the form  <a href="/equipmentdb/request.php" target="_self">Click here to access the Form</a>
+To request a Hold on the iPad, please submit a request by filling the form  <a href="/<?=strtolower($_SESSION["SystemNameStr"])?>/request.php" target="_self">Click here to access the Form</a>
 </H3>
 </div>
 

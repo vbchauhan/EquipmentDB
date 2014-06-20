@@ -14,6 +14,8 @@ top();
 <title>Priddy Loan System</title>
 <script language="javascript" type="text/javascript">
 
+
+// Update or create item in database
 function submititem(param)
 {
 	var updatetype;
@@ -31,9 +33,11 @@ function submititem(param)
 	});
 }
 
+
+// Delete item from the database
 function deleteitem(data)
 {
-
+// Okay/Cancel pop up
 	var isOk = window.confirm("Are you sure?");
 
 	if(isOk) {
@@ -52,6 +56,7 @@ function deleteitem(data)
 	}
 }
 
+// Popup to add new item information
 function addItemInformation()
 {
 	
@@ -89,6 +94,7 @@ function addItemInformation()
 	
 }
 
+// Pop up to edit any current item information
 function editInformation(barcode,serial,description,type)
 {
 	
@@ -143,6 +149,7 @@ $nums = mysql_num_rows($result);
 ?>
 <br><br>
 	<div align="center">
+<!-- Table Header -->
 		<table width="500" border="0" align="center">
 		<TR>
 			<TD WIDTH="150" class="tableheading" NOWRAP ALIGN="left"><strong>&nbsp;Item Barcode&nbsp;</strong></TD>

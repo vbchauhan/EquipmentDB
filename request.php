@@ -40,7 +40,7 @@ function getUserInfo(){
 	else
 	{
 		$.ajax({
-			  url: '/equipmentdb/request.php?barcode='+barcode,
+			  url: 'request.php?barcode='+barcode,
 			  async: false,
 			  dataType: 'json',
 			  success : function (data) {
